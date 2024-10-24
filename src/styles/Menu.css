@@ -1,0 +1,66 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.menu__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.menu__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.menu__close-icon {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 34px;
+    cursor: pointer;
+    color: rgb(84, 84, 84);
+    transition: transform .05s ease;
+}
+
+.menu__close-icon:active {
+    transform: scale(.9);
+}
+
+.menu__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.menu__button {
+    padding: 15px 30px;
+    font-size: 20px;
+    font-family: var(--font-primary-bold);
+    color: var(--light-button);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform .05s ease;
+}
+
+.menu__button:active {
+    transform: scale(.9);
+}

@@ -1,0 +1,78 @@
+.time-control {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.set-timer__display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-control.shake {
+    animation: shake .5s;
+}
+
+.set-timer__chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 1.5rem;
+    white-space: nowrap;
+    transition: transform .1s ease;
+}
+
+.set-timer__chevron--pressed {
+    transform: scale(.85);
+    transition: transform 0.1s ease-out;
+}
+
+.set-timer__chevron:active {
+    transform: scale(.8);
+    transition: transform .1s ease;
+}
+
+.set-timer__time {
+    font-size: 80px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.set-timer__time-span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(80, 80, 80);
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.set-timer__start-button {
+    padding: 5px 40px;
+    font-size: 24px;
+    letter-spacing: 2.5px;
+}
+
+
+.set-timer__start-button:disabled {
+    cursor: pointer;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+}

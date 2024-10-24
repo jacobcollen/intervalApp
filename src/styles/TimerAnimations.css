@@ -1,0 +1,6 @@
+.timer-paused-indicator {
+    position: absolute;
+    top: 65vh;
+    transform: translateY(-50%);
+    color: rgb(91, 91, 91);
+}

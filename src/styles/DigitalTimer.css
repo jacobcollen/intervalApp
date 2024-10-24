@@ -1,0 +1,8 @@
+.digital-timer__time {
+    font-size: 100px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0 10px;
+    white-space: nowrap;
+}

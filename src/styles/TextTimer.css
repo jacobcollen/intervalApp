@@ -1,0 +1,9 @@
+.text-timer__time {
+    font-size: 30px;
+    text-align: center;
+    font-family: var(--font-primary-bold);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    margin: 0;
+    padding: 3rem;
+}

@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    position: relative;
+}
+
+.navbar__title {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.navbar__icon {
+    position: absolute;
+    left: 20px;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    transition: transform .05s ease;
+}
+
+.navbar__icon:active {
+    transform: scale(.9);
+}
