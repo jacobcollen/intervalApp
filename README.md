@@ -8,6 +8,7 @@ A countdown timer application built with React, featuring digital, analog, and t
 - **Digital Timer**: A clear, digital countdown display.
 - **Analog Timer**: Analog clock interface.
 - **Text Timer**: A text-based timer view.
+- **Intervals**: Configure intervals to automatically restart the timer.
 - **Pause & Resume**: Tap to pause and resume the timer at any point.
 - **Abort Function**: Quickly reset the timer and return to the set timer page.
 
@@ -22,4 +23,3 @@ A countdown timer application built with React, featuring digital, analog, and t
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/jacobcollen/intervalApp.git
-   cd interval-app
