@@ -1,6 +1,6 @@
 # Interval App
 
-A countdown timer application built with React, featuring digital, analog, and text-based timer views. Users can set custom intervals, switch between timer views, and control the timer through an intuitive user interface.
+A countdown timer application built with React, featuring digital, analog, and text-based views. Users can set custom intervals, pause or stop the timer, and easily switch between views through an intuitive interface.
 
 ## Features
 
