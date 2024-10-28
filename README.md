@@ -20,6 +20,6 @@ A countdown timer application built with React, featuring digital, analog, and t
 
 ## Getting Started
 
-1. **Clone the repository:**
+**Clone the repository:**
    ```bash
    git clone https://github.com/jacobcollen/intervalApp.git
