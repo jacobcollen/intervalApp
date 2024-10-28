@@ -10,10 +10,6 @@
     align-items: center;
 }
 
-.time-control.shake {
-    animation: shake .5s;
-}
-
 .set-timer__chevron {
     display: flex;
     align-items: center;
@@ -21,17 +17,18 @@
     cursor: pointer;
     padding: 1.5rem;
     white-space: nowrap;
-    transition: transform .1s ease;
+    transition: transform .2s ease;
 }
 
 .set-timer__chevron--pressed {
-    transform: scale(.85);
-    transition: transform 0.1s ease-out;
+    transform: scale(.8);
+    transition: transform .1s ease-out;
 }
 
-.set-timer__chevron:active {
-    transform: scale(.8);
-    transition: transform .1s ease;
+.set-timer__chevron:active,
+.set-timer__chevron:focus {
+    transform: scale(.85);
+    transition: transform .05s ease;
 }
 
 .set-timer__time {
@@ -53,26 +50,22 @@
     padding: 5px 40px;
     font-size: 24px;
     letter-spacing: 2.5px;
+    margin: .5rem 0 2.5rem 0;
 }
-
 
 .set-timer__start-button:disabled {
-    cursor: pointer;
+    cursor: default;
 }
 
-@keyframes shake {
+.set-timer__interval-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 245px;
+}
 
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-10px);
-    }
-    50% {
-        transform: translateX(10px);
-    }
-    75% {
-        transform: translateX(-10px);
-    }
+.set-timer__interval-toggle span {
+    font-size: .9em;
+    margin-left: .7rem;
 }

@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
-import Button from "./Button";
 import "../styles/AnalogTimer.css";
 
-const AnalogTimer = ({ minutes, seconds, onAbort, onToggle }) => {
+const AnalogTimer = ({
+	minutes,
+	seconds,
+	onAbort,
+	onToggle,
+	shakeVertical,
+}) => {
 	const secondsAngle = (seconds / 60) * 360;
 	const minutesAngle = ((minutes % 60) / 60) * 360 + (seconds / 60) * 6;
 
@@ -21,7 +26,10 @@ const AnalogTimer = ({ minutes, seconds, onAbort, onToggle }) => {
 	});
 
 	return (
-		<div className="container" onClick={onToggle}>
+		<div
+			className={`container ${shakeVertical ? "shake-vertical" : ""}`}
+			onClick={onToggle}
+		>
 			<div className="container__middle">
 				<div className="analog-timer">
 					<div className="analog-timer__circle">
@@ -42,7 +50,9 @@ const AnalogTimer = ({ minutes, seconds, onAbort, onToggle }) => {
 				</div>
 			</div>
 			<div className="container__bottom">
-				<Button onClick={onAbort} text="ABORT TIMER" />
+				<button className="button" onClick={onAbort}>
+					ABORT TIMER
+				</button>
 			</div>
 		</div>
 	);

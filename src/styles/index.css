@@ -2,7 +2,7 @@
   --font-primary: "PT Sans", sans-serif;
   --font-primary-bold: "PT Sans Bold", sans-serif;
 
-  /* Färger */
+  /* Colors */
   --light-background: #f4f4f4;
   --dark-background: #222222;
   --dark-text: #2a2a2a;
@@ -14,10 +14,10 @@
   --dark-overlay: rgba(15, 15, 15, 1);
 }
 
+html,
 body {
   -webkit-user-drag: none;
   user-select: none;
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -54,4 +54,54 @@ img {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+.time-control.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  75% {
+    transform: translateX(-10px);
+  }
+}
+
+.container.shake-vertical,
+.container.shake-vertical .container__middle {
+  animation: shakeVertical 0.5s;
+  transform-origin: center;
+}
+
+@keyframes shakeVertical {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  75% {
+    transform: translateY(-10px);
+  }
 }

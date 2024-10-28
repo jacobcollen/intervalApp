@@ -1,4 +1,3 @@
-import Button from "./Button";
 import "../styles/TextTimer.css";
 
 const numberToWords = (num) => {
@@ -43,7 +42,7 @@ const numberToWords = (num) => {
 	return one === 0 ? `${tens[ten]}` : `${tens[ten]}-${ones[one]}`;
 };
 
-const TextTimer = ({ minutes, seconds, onAbort, onToggle }) => {
+const TextTimer = ({ minutes, seconds, onAbort, onToggle, shakeVertical }) => {
 	const formattedTime = () => {
 		if (minutes === 0 && seconds === 0) {
 			return "TIMER ENDED";
@@ -64,12 +63,17 @@ const TextTimer = ({ minutes, seconds, onAbort, onToggle }) => {
 	};
 
 	return (
-		<div className="container" onClick={onToggle}>
+		<div
+			className={`container ${shakeVertical ? "shake-vertical" : ""}`}
+			onClick={onToggle}
+		>
 			<div className="container__middle">
 				<h1 className="text-timer__time">{formattedTime()}</h1>
 			</div>
 			<div className="container__bottom">
-				<Button onClick={onAbort} text="ABORT TIMER" />
+				<button className="button" onClick={onAbort}>
+					ABORT TIMER
+				</button>
 			</div>
 		</div>
 	);

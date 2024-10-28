@@ -3,9 +3,7 @@ import Button from "./Button";
 import alarmicon from "../assets/icons/bell-icon.svg";
 import "../styles/AlarmView.css";
 
-const AlarmView = ({ setView }) => {
-	const startNewTimer = () => setView("setTimer");
-
+const AlarmView = ({ resetAll }) => {
 	return (
 		<div className="container alarm-view__background">
 			<div className="container__middle">
@@ -17,7 +15,7 @@ const AlarmView = ({ setView }) => {
 						animate={{ rotate: [0, 5, -5, 0] }}
 						transition={{ duration: 1, repeat: Infinity, repeatType: "mirror" }}
 					/>
-					<h1 className="alarm-view__headline">Times up!</h1>
+					<h1 className="alarm-view__headline">Time's up!</h1>
 					<div className="alarm-view__rings">
 						<div className="ring"></div>
 						<div className="ring"></div>
@@ -27,7 +25,7 @@ const AlarmView = ({ setView }) => {
 			</div>
 			<div className="container__bottom">
 				<Button
-					onClick={startNewTimer}
+					onClick={resetAll}
 					text="START NEW TIMER"
 					className="button--light"
 				/>

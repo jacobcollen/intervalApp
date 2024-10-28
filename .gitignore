@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Dependency lock files
+package-lock.json
+
+# Environment variables
+.env
+.local.yml
+
+# Build outputs
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# macOS system files
+.DS_Store

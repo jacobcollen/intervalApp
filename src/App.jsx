@@ -14,8 +14,15 @@ import "./styles/index.css";
 const App = () => {
 	const [loading, setLoading] = useState(true);
 	const [view, setView] = useState("setTimer");
-	const [time, setTime] = useState({ minutes: 2, seconds: 0 });
+	const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 	const [showMenu, setShowMenu] = useState(false);
+	const [intervalMode, setIntervalMode] = useState(false);
+	const [shake, setShake] = useState(false);
+	const [shakeVertical, setShakeVertical] = useState(false);
+
+	const isClockView =
+		view === "digital" || view === "analog" || view === "text";
+	const isTimeZero = time.minutes === 0 && time.seconds === 0;
 
 	const {
 		startTimer,
@@ -25,7 +32,16 @@ const App = () => {
 		minutes,
 		seconds,
 		running,
-	} = useCustomTimer(time, () => setView("alarm"));
+		finished,
+	} = useCustomTimer(
+		time,
+		() => setView("alarm"),
+		intervalMode,
+		() => {
+			setShakeVertical(true);
+			setTimeout(() => setShakeVertical(false), 500);
+		}
+	);
 
 	useEffect(() => {
 		const timer = setTimeout(() => setLoading(false), 3000);
@@ -36,6 +52,19 @@ const App = () => {
 		setInitialTime(time);
 		startTimer();
 		setView("digital");
+	};
+
+	const handleStart = () => {
+		if (isTimeZero) {
+			triggerShake();
+			return;
+		}
+		handleStartTimer();
+	};
+
+	const triggerShake = () => {
+		setShake(true);
+		setTimeout(() => setShake(false), 500);
 	};
 
 	const handleToggle = () => {
@@ -51,17 +80,19 @@ const App = () => {
 		setView("setTimer");
 	};
 
-	const navigateToView = (desiredView) => {
-		if (view === "setTimer" && !running) {
-			setInitialTime(time);
-			startTimer();
-		}
-		setView(desiredView);
-		setShowMenu(false);
+	const resetAll = () => {
+		resetTimer();
+		setView("setTimer");
 	};
 
-	const isClockView =
-		view === "digital" || view === "analog" || view === "text";
+	const navigateToView = (desiredView) => {
+		if (isTimeZero) {
+			triggerShake();
+		} else if (view !== "setTimer" || !running) {
+			setView(desiredView);
+		}
+		setShowMenu(false);
+	};
 
 	if (loading) {
 		return <LoadingScreen />;
@@ -71,7 +102,11 @@ const App = () => {
 		<>
 			{view !== "alarm" && <Navbar setShowMenu={setShowMenu} />}
 			{showMenu && view !== "alarm" && (
-				<Menu setView={navigateToView} setShowMenu={setShowMenu} />
+				<Menu
+					setView={navigateToView}
+					setShowMenu={setShowMenu}
+					shake={shake}
+				/>
 			)}
 			{!showMenu && (
 				<>
@@ -80,7 +115,10 @@ const App = () => {
 							key="setTimer"
 							time={time}
 							setTime={setTime}
-							onStart={handleStartTimer}
+							onStart={handleStart}
+							intervalMode={intervalMode}
+							setIntervalMode={setIntervalMode}
+							shake={shake}
 						/>
 					)}
 					{view === "digital" && (
@@ -90,6 +128,7 @@ const App = () => {
 							seconds={seconds}
 							onAbort={handleAbort}
 							onToggle={handleToggle}
+							shakeVertical={shakeVertical}
 						/>
 					)}
 					{view === "analog" && (
@@ -99,6 +138,7 @@ const App = () => {
 							seconds={seconds}
 							onAbort={handleAbort}
 							onToggle={handleToggle}
+							shakeVertical={shakeVertical}
 						/>
 					)}
 					{view === "text" && (
@@ -108,9 +148,12 @@ const App = () => {
 							seconds={seconds}
 							onAbort={handleAbort}
 							onToggle={handleToggle}
+							shakeVertical={shakeVertical}
 						/>
 					)}
-					{view === "alarm" && <AlarmView setView={setView} />}
+					{view === "alarm" && !intervalMode && finished && (
+						<AlarmView resetAll={resetAll} />
+					)}
 				</>
 			)}
 			{!running && isClockView && (
